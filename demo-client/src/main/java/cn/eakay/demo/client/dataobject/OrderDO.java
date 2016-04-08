@@ -6,8 +6,8 @@ import lombok.Data;
 import java.util.*;
 
 /**
- * ¶©µ¥Êı¾İ¶ÔÏó
- * DOÊôÓÚÈ«¾Ö¶ÔÏó ±»ºóĞøµÄ´¦ÀíÈçservice ao manager handlerµÈÓÃµ½
+ * è®¢å•æ•°æ®å¯¹è±¡
+ * DOå±äºå…¨å±€å¯¹è±¡ è¢«åç»­çš„å¤„ç†å¦‚service ao manager handlerç­‰ç”¨åˆ°
  *
  * @author xugang
  */
@@ -16,59 +16,59 @@ public class OrderDO extends BaseDO {
 
     private static final long serialVersionUID = 7302260880805552158L;
 
-    public static final Integer ORDER_TYPE_OLD = 0;//ÀÏ¶©µ¥
-    public static final Integer ORDER_TYPE_NEW = 1;//ĞÂ¶©µ¥
+    public static final Integer ORDER_TYPE_OLD = 0;//è€è®¢å•
+    public static final Integer ORDER_TYPE_NEW = 1;//æ–°è®¢å•
 
-    private Integer orderType;//¶©µ¥ÀàĞÍ£º1:ĞÂ£»0:¾É
-    private Long parentId;// ¸¸¶©µ¥id¡£
-    private Long buyerId;// Âò¼ÒÌÔ±¦id
-    private String buyerNick;// Âò¼ÒÌÔ±¦nick
-    private String buyerAlipayId;// Âò¼ÒÖ§¸¶±¦id
-    private String buyerAlipayEmail;// Âò¼ÒÖ§¸¶±¦Email
-    private Integer status;// ¶©µ¥×´Ì¬
-    private Integer payStatus;// ¶©µ¥Ö§¸¶×´Ì¬
+    private Integer orderType;//è®¢å•ç±»å‹ï¼š1:æ–°ï¼›0:æ—§
+    private Long parentId;// çˆ¶è®¢å•idã€‚
+    private Long buyerId;// ä¹°å®¶æ·˜å®id
+    private String buyerNick;// ä¹°å®¶æ·˜å®nick
+    private String buyerAlipayId;// ä¹°å®¶æ”¯ä»˜å®id
+    private String buyerAlipayEmail;// ä¹°å®¶æ”¯ä»˜å®Email
+    private Integer status;// è®¢å•çŠ¶æ€
+    private Integer payStatus;// è®¢å•æ”¯ä»˜çŠ¶æ€
 
-    private Integer delStatus;// É¾³ı×´Ì¬
-    private boolean isAct = false;// ÊÇ·ñ»î¶¯¶©µ¥
-    private Integer totalPrice;// ¶©µ¥×Ü¼Û£¨º¬´úÀíÉÌµ÷¼ÛÖ®ºóµÄ¼Û¸ñ£©
-    private Integer payWay;// Ö§¸¶ÇşµÀ
-    private String alipayTradeNo;// Ö§¸¶±¦½»Ò×ºÅ
-    private String createAppkey = DemoConstant.APPNAME;// ÏÂµ¥appKey
-    private String payAppkey;// Ö§¸¶appKey
-    //    private RelationDO relation;// ÁªÏµÈË
-    private String failMemo;// ¶©µ¥Ê§°Ü±¸×¢
-    private Integer refer;// ¶©µ¥À´Ô´
-    private String scene;// À´Ô´³¡¾°
-    //    private TrafficDO trafficDO;// ÎïÁ÷ĞÅÏ¢
-    private Double score;// ÆÀ·Ö
-    private Integer accessSubType;// Ö§¸¶±¦Ö§¸¶ÇşµÀ
-    private Date payTime;// Âò¼ÒÖ§¸¶³É¹¦Ê±¼ä
-    private Date pay2sellerTime;// Ç®×ªÕË¸øÂô¼ÒµÄÊ±¼ä
-    private Date payLatestTime;// Âò¼Ò×î³ÙÖ§¸¶Ê±¼ä
-    private Date processLatestTime;// Âô¼Ò×î³Ù´¦ÀíÊ±¼ä
-    private String memo;// ±¸×¢
-    private String outOrderNo; // ÉÌ»§¶©µ¥ºÅ
+    private Integer delStatus;// åˆ é™¤çŠ¶æ€
+    private boolean isAct = false;// æ˜¯å¦æ´»åŠ¨è®¢å•
+    private Integer totalPrice;// è®¢å•æ€»ä»·ï¼ˆå«ä»£ç†å•†è°ƒä»·ä¹‹åçš„ä»·æ ¼ï¼‰
+    private Integer payWay;// æ”¯ä»˜æ¸ é“
+    private String alipayTradeNo;// æ”¯ä»˜å®äº¤æ˜“å·
+    private String createAppkey = DemoConstant.APPNAME;// ä¸‹å•appKey
+    private String payAppkey;// æ”¯ä»˜appKey
+    //    private RelationDO relation;// è”ç³»äºº
+    private String failMemo;// è®¢å•å¤±è´¥å¤‡æ³¨
+    private Integer refer;// è®¢å•æ¥æº
+    private String scene;// æ¥æºåœºæ™¯
+    //    private TrafficDO trafficDO;// ç‰©æµä¿¡æ¯
+    private Double score;// è¯„åˆ†
+    private Integer accessSubType;// æ”¯ä»˜å®æ”¯ä»˜æ¸ é“
+    private Date payTime;// ä¹°å®¶æ”¯ä»˜æˆåŠŸæ—¶é—´
+    private Date pay2sellerTime;// é’±è½¬è´¦ç»™å–å®¶çš„æ—¶é—´
+    private Date payLatestTime;// ä¹°å®¶æœ€è¿Ÿæ”¯ä»˜æ—¶é—´
+    private Date processLatestTime;// å–å®¶æœ€è¿Ÿå¤„ç†æ—¶é—´
+    private String memo;// å¤‡æ³¨
+    private String outOrderNo; // å•†æˆ·è®¢å•å·
 
     private List<ActivityDO> activityDOs = new ArrayList<>();
 
-    private Map<String, String> attrMap = new HashMap<String, String>();// attributesÄÚÈİ½âÎö³ÉMap±£´æ
+    private Map<String, String> attrMap = new HashMap<String, String>();// attributeså†…å®¹è§£ææˆMapä¿å­˜
 
     /**
-     * ¼ÆËãÂò¼ÒÊµ¼ÊÓ¦¸ÃÖ§¸¶¶àÉÙÇ® ÉÌÆ·×Ü¼Û - »î¶¯ÓÅ»İ
+     * è®¡ç®—ä¹°å®¶å®é™…åº”è¯¥æ”¯ä»˜å¤šå°‘é’± å•†å“æ€»ä»· - æ´»åŠ¨ä¼˜æƒ 
      */
     public Integer getBuyerShouldPay() {
         return this.totalPrice - getTotalOffPricesInAct();
     }
 
     /**
-     * ¼ÆËãÂô¼ÒÊµ¼ÊÓ¦¸ÃµÃµ½µÄ×ÜÇ®
+     * è®¡ç®—å–å®¶å®é™…åº”è¯¥å¾—åˆ°çš„æ€»é’±
      */
     public Integer getRealTotalPrice() {
         return this.totalPrice;
     }
 
     /**
-     * ¼ÆËã¸Ã¶©µ¥»î¶¯×Ü¹²ÓÅ»İÁË¶àÉÙÇ®
+     * è®¡ç®—è¯¥è®¢å•æ´»åŠ¨æ€»å…±ä¼˜æƒ äº†å¤šå°‘é’±
      */
     public Integer getTotalOffPricesInAct() {
         if (!this.isAct()) {
@@ -84,7 +84,7 @@ public class OrderDO extends BaseDO {
     /*public String getAttributes() {
         try {
             if (!attrMap.isEmpty()) {
-                //ÒÆ³ıalueÊÇnullµÄÊôĞÔ
+                //ç§»é™¤alueæ˜¯nullçš„å±æ€§
                 clearNullValue(attrMap);
                 JSONObject obj = JSONObject.fromObject(attrMap);
                 return obj.toString();
@@ -122,14 +122,14 @@ public class OrderDO extends BaseDO {
     }*/
 
     /**
-     * Ìí¼ÓÊôĞÔ
+     * æ·»åŠ å±æ€§
      */
     public void addAttr(String key, String value) {
         this.attrMap.put(key, value);
     }
 
     /**
-     * ¸ù¾İkey»ñÈ¡ÊôĞÔÖµ
+     * æ ¹æ®keyè·å–å±æ€§å€¼
      */
     public String getAttr(String key) {
         try {
@@ -141,7 +141,7 @@ public class OrderDO extends BaseDO {
     }
 
     /**
-     * »ñÈ¡Ö§¸¶³¬Ê±µÄÊ±¼ä£¬µ¥Î»ÊÇ·Ö
+     * è·å–æ”¯ä»˜è¶…æ—¶çš„æ—¶é—´ï¼Œå•ä½æ˜¯åˆ†
      */
     public int getPayExpireTime() {
         return (int) Math.floor((getPayLatestTime().getTime() - (new Date()).getTime()) / 1000.0 / 60.0);

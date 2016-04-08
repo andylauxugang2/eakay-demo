@@ -1,17 +1,17 @@
 package cn.eakay.demo.client.common.constant;
 
 /**
- * demo ³£Á¿
- * ¸÷ÖÖÀàĞÍ
- * ¸÷ÖÖÖµ
- * client°üÏÂ»áÓÃµ½£¬ÈçDO
+ * demo å¸¸é‡
+ * å„ç§ç±»å‹
+ * å„ç§å€¼
+ * clientåŒ…ä¸‹ä¼šç”¨åˆ°ï¼Œå¦‚DO
  *
  * @author xugang
  */
 public class DemoConstant {
 
     /**
-     * Í¨ÓÃ
+     * é€šç”¨
      */
     public static final String APPNAME = "demo";
     public static final String MINUS_SIGN = "-";
@@ -37,20 +37,20 @@ public class DemoConstant {
     public static final String TERMINAL_DEFAULT = "--";
 
     /**
-     * ÉÌÆ·ÀàĞÍ
+     * å•†å“ç±»å‹
      */
     public static final Integer ITEM_TYPE_1 = 1;
     public static final Integer ITEM_TYPE_2 = 2;
     public static final Integer ITEM_TYPE_3 = 3;
 
     /**
-     * Ö§¸¶·½Ê½
+     * æ”¯ä»˜æ–¹å¼
      */
     public static final Integer PAYWAY_GUARANTEE = 2;
     public static final Integer PAYWAY_CAE = 3;
 
     /**
-     * ÕÒÈË´ú¸¶²ÎÊıÖµ:Ñ¡ÔñÁËÖµÎª1,Î´Ñ¡ÔñÎª0
+     * æ‰¾äººä»£ä»˜å‚æ•°å€¼:é€‰æ‹©äº†å€¼ä¸º1,æœªé€‰æ‹©ä¸º0
      */
     public static final Integer PEAR_PAY_YES = 1;
     public static final Integer PEAR_PAY_NO = 0;
@@ -62,12 +62,12 @@ public class DemoConstant {
     public static final String APPKEY_WIRELESS = "Wireless";
 
     /**
-     * ¿ìËÙ¹ºÂòÊÖ»úÑéÖ¤Âë
+     * å¿«é€Ÿè´­ä¹°æ‰‹æœºéªŒè¯ç 
      */
     public static final String QUICK_BUY_PHONE_VERIFY_CODE = "quick_buy_phone_verify_code";
 
     /**
-     * Json·µ»Ø
+     * Jsonè¿”å›
      */
     public static final int IS_SUCCESS = 0;
     public static final int IS_FAIL = -1;
@@ -76,40 +76,40 @@ public class DemoConstant {
     public static final int IS_FAIL_SYSERROR = -3;
     public static final int IS_FAIL_SESSIONERROR = -4;
 
-    public static final String DATE_FMT = "yyyyÄêMMÔÂddÈÕ HH:mm";
+    public static final String DATE_FMT = "yyyyå¹´MMæœˆddæ—¥ HH:mm";
     public static final String DATE_FMT_1 = "yyyy-MM-dd HH:mm";
     public static final String DATE_FMT_2 = "HH:mm";
     public static final String DATE_FMT_3 = "MM-dd";
     public static final String DATE_FMT_4 = "MM-dd HH:mm";
-    public static final Integer ITINERARY_PRICE = 1000;//10·Ö
+    public static final Integer ITINERARY_PRICE = 1000;//10åˆ†
 
 
     /**
-     * »î¶¯ÀàĞÍ
+     * æ´»åŠ¨ç±»å‹
      */
-    public static final Integer ACTIVITYTYPE_SPECIAL_PRICE_ITEM = 1; //ÌØ¼ÛÉÌÆ·
-    public static final Integer ACTIVITYTYPE_BONUS = 2; //ºì°ü
+    public static final Integer ACTIVITYTYPE_SPECIAL_PRICE_ITEM = 1; //ç‰¹ä»·å•†å“
+    public static final Integer ACTIVITYTYPE_BONUS = 2; //çº¢åŒ…
 
-    public static final Integer ACTIVITYTYPE_COMMON_ACTIVITY = 3; //ÆÕÍ¨»î¶¯
-    public static final Integer ACTIVITYTYPE_VIP_ACTIVITY = 4; //VIP»î¶¯
-    public static final Integer ACTIVITYTYPE_TICKET_FREE = 5; //Ãâµ¥»î¶¯
-    public static final Integer ACTIVITYTYPE_NEWUSER = 6; //ĞÂÈË»î¶¯
+    public static final Integer ACTIVITYTYPE_COMMON_ACTIVITY = 3; //æ™®é€šæ´»åŠ¨
+    public static final Integer ACTIVITYTYPE_VIP_ACTIVITY = 4; //VIPæ´»åŠ¨
+    public static final Integer ACTIVITYTYPE_TICKET_FREE = 5; //å…å•æ´»åŠ¨
+    public static final Integer ACTIVITYTYPE_NEWUSER = 6; //æ–°äººæ´»åŠ¨
 
     /**
-     * ×´Ì¬ÀàĞÍ
+     * çŠ¶æ€ç±»å‹
      */
-    public static final Integer ACTIVITY_STATUS_OFF = 0; //ÎŞĞ§
-    public static final Integer ACTIVITY_STATUS_ON = 1; //ÓĞĞ§
-    public static final Integer IS_DELETE = 1; //É¾³ı±êÊ¶Î»
+    public static final Integer ACTIVITY_STATUS_OFF = 0; //æ— æ•ˆ
+    public static final Integer ACTIVITY_STATUS_ON = 1; //æœ‰æ•ˆ
+    public static final Integer IS_DELETE = 1; //åˆ é™¤æ ‡è¯†ä½
 
     /**
-     * ½áËãÀàĞÍ
+     * ç»“ç®—ç±»å‹
      */
-    public static final Integer SETTLEMENTTYPE_ONLINE = 1; //ÏßÉÏ½áËã
-    public static final Integer SETTLEMENTTYPE_OFFLINE = 2; //ÏßÏÂ½áËã
+    public static final Integer SETTLEMENTTYPE_ONLINE = 1; //çº¿ä¸Šç»“ç®—
+    public static final Integer SETTLEMENTTYPE_OFFLINE = 2; //çº¿ä¸‹ç»“ç®—
 
     /**
-     * Ö§¸¶±¦»Øµ÷Ïà¹Ø²ÎÊı
+     * æ”¯ä»˜å®å›è°ƒç›¸å…³å‚æ•°
      */
     public static final String ALIPAY_OUT_ORDER_NO = "out_order_no";
     public static final String ALIPAY_ERROR_CODE = "error_code";
