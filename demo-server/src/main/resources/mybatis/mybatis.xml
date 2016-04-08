@@ -1,0 +1,58 @@
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd"
+	   default-autowire="no" default-lazy-init="true">
+
+
+	<!-- Mybatis demo 数据源 -->
+	<!-- Mybatis SqlSessionFactory -->
+	<bean id="demoSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="demoDataSource" />
+		<property name="configLocation" value="classpath:demo/repository/mybatis-configuration.xml" />
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:demo/repository/sqlmap/*.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 本地数据源事务管理 -->
+	<bean id="localTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="demoDataSource"/>
+	</bean>
+
+	<!-- 开启本地注解事务 -->
+	<tx:annotation-driven proxy-target-class="true" transaction-manager="localTransactionManager"/>
+
+	<aop:aspectj-autoproxy/>
+
+	<aop:config>
+		<aop:pointcut id="localAppService" expression="execution(* cn.eakay.demo.biz.service..*Service*.*(..))"/>
+		<aop:advisor advice-ref="localTxAdvice" pointcut-ref="localAppService"/>
+	</aop:config>
+
+	<tx:advice id="localTxAdvice" transaction-manager="localTransactionManager">
+		<tx:attributes>
+			<tx:method name="select*" read-only="true"/>
+			<tx:method name="find*" read-only="true"/>
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="query*" read-only="true"/>
+			<tx:method name="*"/>
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- Mapper接口所在包名，Spring会自动查找其下的Mapper -->
+	<bean id="demoMapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="sqlSessionFactoryBeanName" value="demoSqlSessionFactory"></property>
+		<property name="basePackage" value="cn.eakay.demo.repository.db.mybatis" />
+	</bean>
+
+
+</beans>

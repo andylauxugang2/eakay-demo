@@ -1,0 +1,25 @@
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+	   default-autowire="no" default-lazy-init="true">
+
+	<!-- 数据源配置 dbcp -->
+	<bean id="demoDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${demo.jdbc.driverClassName}"></property>
+		<property name="url" value="jdbc:mysql://${demo.jdbc.address}?useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull"></property>
+		<property name="username" value="${demo.jdbc.username}"></property>
+		<property name="password" value="${demo.jdbc.password}"></property>
+		<!-- Connection Pooling Info -->
+		<property name="initialSize" value="${demo.cpool.initialSize}" />
+		<property name="maxActive" value="${demo.cpool.maxActive}" />
+		<property name="maxIdle" value="${demo.cpool.maxIdle}" />
+		<property name="maxWait" value="${demo.cpool.maxWait}" />
+		<property name="poolPreparedStatements" value="${demo.cpool.poolPreparedStatements}" />
+		<property name="defaultAutoCommit" value="${demo.cpool.defaultAutoCommit}" />
+		<property name="timeBetweenEvictionRunsMillis" value="${demo.cpool.timeBetweenEvictionRunsMillis}"></property>
+		<property name="minEvictableIdleTimeMillis" value="${demo.cpool.minEvictableIdleTimeMillis}"></property>
+	</bean>
+
+</beans>

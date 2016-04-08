@@ -1,0 +1,101 @@
+<!DOCTYPE import-control PUBLIC
+        "-//Puppy Crawl//DTD Import Control 1.1//EN"
+        "http://www.puppycrawl.com/dtds/import_control_1_1.dtd">
+
+<import-control pkg="cn.eakay.demo">
+
+    <!-- THINK HARD ABOUT THE LAYERING OF THE PROJECT BEFORE CHANGING THIS FILE -->
+
+    <!-- common library dependencies -->
+    <allow pkg="java"/>
+    <allow pkg="javax"/>
+    <allow pkg="org"/>
+    <allow pkg="ch.qos"/>
+    <allow pkg="com.alibaba"/>
+    <allow pkg="com.amazonaws"/>
+    <allow pkg="com.fasterxml"/>
+    <allow pkg="com.javafx"/>
+    <allow pkg="com.jayway"/>
+    <allow pkg="com.mysql"/>
+    <allow pkg="net.minidev"/>
+    <allow pkg="lombok"/>
+    <allow pkg="cn.eakay.demo"/>
+
+    <!-- no one depends on the server -->
+    <disallow pkg="eakay"/>
+
+    <!-- anyone can use public classes -->
+    <allow pkg="cn.eakay.demo.client" exact-match="true"/>
+    <allow pkg="cn.eakay.demo.util"/>
+
+    <subpackage name="client">
+        <disallow pkg="cn.eakay.demo.biz"/>
+        <disallow pkg="cn.eakay.demo.repository"/>
+        <disallow pkg="cn.eakay.demo.webfront"/>
+        <disallow pkg="cn.eakay.demo.server"/>
+        <allow pkg="cn.eakay.demo.util" exact-match="true"/>
+    </subpackage>
+
+    <subpackage name="biz">
+        <allow class="org\.*\.*" regex="true"/>
+        <subpackage name="manager">
+            <allow pkg="cn.eakay.demo.repository"/>
+            <allow pkg="cn.eakay.demo.client"/>
+            <allow pkg="cn.eakay.demo.util"/>
+            <disallow pkg="cn.eakay.demo.biz.service"/>
+        </subpackage>
+        <subpackage name="service">
+            <allow pkg="cn.eakay.demo.repository.db"/>
+            <allow pkg="cn.eakay.demo.biz.manager"/>
+            <allow pkg="cn.eakay.demo.client"/>
+            <allow pkg="cn.eakay.demo.util"/>
+            <disallow pkg="cn.eakay.demo.repository.cache"/>
+            <disallow pkg="cn.eakay.demo.repository.nosql"/>
+        </subpackage>
+    </subpackage>
+
+    <subpackage name="job">
+        <allow pkg="cn.eakay.demo.repository"/>
+        <allow pkg="cn.eakay.demo.biz"/>
+        <allow pkg="cn.eakay.demo.client"/>
+        <allow pkg="cn.eakay.demo.util"/>
+        <disallow pkg="cn.eakay.demo.webfront"/>
+    </subpackage>
+
+    <subpackage name="repository">
+        <disallow pkg="cn.eakay.demo.biz"/>
+        <disallow pkg="cn.eakay.demo.job"/>
+        <disallow pkg="cn.eakay.demo.server"/>
+        <disallow pkg="cn.eakay.demo.webfront"/>
+    </subpackage>
+
+    <subpackage name="server">
+        <allow pkg="cn.eakay.demo.client"/>
+        <allow pkg="cn.eakay.demo.util"/>
+        <allow pkg="cn.eakay.demo.webfront"/>
+        <allow pkg="cn.eakay.demo.job"/>
+        <disallow pkg="cn.eakay.demo.repository"/>
+        <disallow pkg="cn.eakay.demo.biz"/>
+    </subpackage>
+
+    <subpackage name="util">
+        <allow pkg="cn.eakay.demo.client"/>
+        <disallow pkg="cn.eakay.demo.biz"/>
+        <disallow pkg="cn.eakay.demo.app"/>
+        <disallow pkg="cn.eakay.demo.job"/>
+        <disallow pkg="cn.eakay.demo.repository"/>
+        <disallow pkg="cn.eakay.demo.webfront"/>
+        <disallow pkg="cn.eakay.demo.server"/>
+    </subpackage>
+
+    <subpackage name="webfront">
+        <allow pkg="cn.eakay.demo.biz"/>
+        <allow pkg="cn.eakay.demo.client"/>
+        <allow pkg="cn.eakay.demo.util"/>
+        <allow pkg="cn.eakay.demo.repository.model"/>
+        <allow pkg="cn.eakay.demo.aop"/>
+        <disallow pkg="cn.eakay.demo.job"/>
+        <disallow pkg="cn.eakay.demo.server"/>
+    </subpackage>
+
+</import-control>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+		   xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+		   default-autowire="byName" default-lazy-init="true">
+
+	<!-- 连接池管理器 HttpClient是线程安全的 且可同时执行多个线程的请求 管理持久的http连接 节省创建连接时间 -->
+	<!-- 维护的连接数在每个路由基础和总数上都有限制 -->
+	<bean id="pollingConnectionManager" class="org.apache.http.impl.conn.PoolingHttpClientConnectionManager">
+		<!-- 最大连接数 -->
+		<property name="maxTotal" value="${common.rest.service.polling.maxTotal}" />
+		<!-- 每个路由基础的连接 -->
+		<property name="defaultMaxPerRoute" value="${common.rest.service.polling.defaultMaxPerRoute}" />
+	</bean>
+
+	<bean id="httpClientBuilder" class="org.apache.http.impl.client.HttpClientBuilder"
+		  factory-method="create">
+		<property name="connectionManager" ref="pollingConnectionManager" />
+	</bean>
+
+	<bean id="httpClient" factory-bean="httpClientBuilder"
+		  factory-method="build" />
+
+	<bean id="clientHttpRequestFactory"
+		  class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory">
+		<constructor-arg ref="httpClient" />
+		<!-- 连接超时时长 -->
+		<property name="connectTimeout" value="${common.rest.service.connectTimeout}" />
+		<property name="readTimeout" value="${common.rest.service.readTimeout}" />
+	</bean>
+
+	<!-- 带有连接池的 RestTemplate -->
+	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+		<constructor-arg ref="clientHttpRequestFactory" />
+		<property name="messageConverters">
+			<list>
+				<bean class="org.springframework.http.converter.StringHttpMessageConverter" />
+				<bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter" />
+				<bean class="org.springframework.http.converter.FormHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+
+
+</beans>
