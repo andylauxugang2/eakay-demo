@@ -5,9 +5,9 @@ import cn.eakay.commons.base.BaseParam;
 import lombok.Data;
 
 /**
- * Ò»°ã´«µ½controller²ã ¾ÍÓÃÍêÁË
- * Ê¹ÓÃaop ¶Ô validationÍ³Ò»´¦Àí
- * Èç¹ûÄÚÍørpc½Ó¿Ú»¥µ÷£¬¿É²»ÊÊÓÃParam£¬Ö±½ÓÓÃDO£¬´ËParam±»ControllerÊ¹ÓÃ
+ * ä¸€èˆ¬ä¼ åˆ°controllerå±‚ å°±ç”¨å®Œäº†
+ * ä½¿ç”¨aop å¯¹ validationç»Ÿä¸€å¤„ç†
+ * å¦‚æœå†…ç½‘rpcæ¥å£äº’è°ƒï¼Œå¯ä¸é€‚ç”¨Paramï¼Œç›´æ¥ç”¨DOï¼Œæ­¤Paramè¢«Controllerä½¿ç”¨
  * @author xugang
  */
 @Data
@@ -16,7 +16,7 @@ public class CreateOrderParam extends BaseParam {
     public static final int NEEDSAVE = 1;
     public static final int NOT_NEEDSAVE = 0;
 
-    Long buyerId;//Âò¼ÒId
+    Long buyerId;//ä¹°å®¶Id
 
     Integer orderType;
 }

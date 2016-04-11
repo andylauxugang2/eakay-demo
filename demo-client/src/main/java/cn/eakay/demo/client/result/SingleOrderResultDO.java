@@ -7,8 +7,8 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * service½Ó¿Ú´¦Àí½á¹û¶ÔÏó
- * ±»service web-front controllerÓÃµ½
+ * serviceæ¥å£å¤„ç†ç»“æœå¯¹è±¡
+ * è¢«service web-front controllerç”¨åˆ°
  * @author xugang
  */
 @Data
@@ -17,8 +17,8 @@ public class SingleOrderResultDO extends ResultDO {
 	private static final long serialVersionUID = -8377627780593024439L;
 
 	private OrderDO order;
-	private boolean isHistory;//ÊÇ·ñÀúÊ·¶©µ¥
-	private Date confirmTimeoutDate;//ÒÑÈ·ÈÏ³¬Ê±Ê±¿Ì
+	private boolean isHistory;//æ˜¯å¦å†å²è®¢å•
+	private Date confirmTimeoutDate;//å·²ç¡®è®¤è¶…æ—¶æ—¶åˆ»
 
-	//ÆäËûDO
+	//å…¶ä»–DO
 }

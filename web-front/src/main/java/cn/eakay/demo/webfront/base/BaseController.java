@@ -1,9 +1,6 @@
 package cn.eakay.demo.webfront.base;
 
 
-import cn.eakay.commons.base.ResultDO;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,8 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.PrintWriter;
 
 @Slf4j
 @Data
@@ -47,26 +42,5 @@ public class BaseController {
         this.session = request.getSession();
     }
 
-    protected String json(ResultDO resultDO){
-        Gson gson = new GsonBuilder().setDateFormat(JSON_DATE_FORMAT).create();
-        String json = gson.toJson(resultDO);
-        return json;
-    }
-
-    @Deprecated
-    protected void jsonResponse(HttpServletResponse response, ResultDO resultDO) {
-        PrintWriter out = null;
-        response.setContentType(RESPONSE_CONTENT_TYPE_JSON);
-        try {
-            out = response.getWriter();
-            out.print(json(resultDO));
-            out.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-            log.error("jsonResponse method exception:", e);
-        } finally {
-            out.close();
-        }
-    }
 
 }
