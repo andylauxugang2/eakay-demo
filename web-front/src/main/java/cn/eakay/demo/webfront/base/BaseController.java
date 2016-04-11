@@ -42,5 +42,4 @@ public class BaseController {
         this.session = request.getSession();
     }
 
-
 }
