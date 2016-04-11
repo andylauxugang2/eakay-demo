@@ -28,7 +28,7 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-@RequestMapping(value = "/", params = {"Action"})
+@RequestMapping(value = "/")
 public class OrderController extends BaseController {
     @Autowired
     private OrderService orderService;
