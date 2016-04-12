@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:commons-job="http://www.eakay.cn/schema/commons-job-ext"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.eakay.cn/schema/commons-job-ext
+	    http://www.eakay.cn/schema/ext/commons-job-ext.xsd"
+       default-autowire="no" default-lazy-init="true">
+
+    <commons-job:scan scanner="cn.eakay.commons.job.base.quartz.QuartzScannerConfigurer">
+        <commons-job:property key="basePackage" value="cn.eakay.demo.biz.jobs" />
+        <commons-job:property key="autoStartUp" value="true" />
+    </commons-job:scan>
+
+</beans>

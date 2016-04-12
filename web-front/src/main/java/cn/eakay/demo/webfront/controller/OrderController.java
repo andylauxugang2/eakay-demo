@@ -10,6 +10,7 @@ import cn.eakay.demo.client.param.UpdateOrderParam;
 import cn.eakay.demo.client.result.SingleOrderResultDO;
 import cn.eakay.demo.webfront.base.BaseController;
 import lombok.extern.slf4j.Slf4j;
+import org.perf4j.aop.Profiled;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -39,7 +40,8 @@ public class OrderController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/order", method = RequestMethod.GET)
-    @Performance(extent = Extent.Whole)
+//    @Performance(extent = Extent.Whole)
+    @Profiled
     public ResponseEntity<List<OrderDO>> listAllOrders() {
         List<OrderDO> orderDOs = orderService.getAllOrders(new QueryOption() {
             {

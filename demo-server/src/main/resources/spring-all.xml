@@ -31,6 +31,7 @@
 	<context:component-scan base-package="cn.eakay.demo.biz.manager" />
     <context:component-scan base-package="cn.eakay.demo.repository.db.mybatis" />
     <context:component-scan base-package="cn.eakay.commons.base.performance.aop" />
+	<bean id="timingAspect" class="org.perf4j.slf4j.aop.TimingAspect"/>
 
 	<!-- datasource -->
 	<import resource="classpath:/dao.persistence/datasource-demo.xml" />
@@ -40,6 +41,8 @@
 	<!--<import resource="classpath:/redis/spring-redis.xml" />-->
 	<!-- spring mvc -->
 	<import resource="classpath:/mvc/spring-mvc.xml" />
+	<!-- spring job -->
+	<import resource="classpath:/job/spring-job.xml" />
 	<!-- restful -->
 	<import resource="classpath:/restful/spring-restful.xml" />
 	<!-- config -->

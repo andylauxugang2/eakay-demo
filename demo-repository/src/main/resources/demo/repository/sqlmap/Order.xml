@@ -9,18 +9,19 @@
     </resultMap>
 
     <sql id="order_all_column">
+        id,
         order_type,
         buyer_id
     </sql>
     
     <select id="queryOrderById" resultMap="orderResultMap">
-        select order_type,buyer_id
+        select <include refid="order_all_column"/>
         from t_order
         where id = #{id}
     </select>
 
     <select id="queryOrder" resultMap="orderResultMap">
-        select order_type,buyer_id
+        select <include refid="order_all_column"/>
         from t_order
     </select>
 </mapper>

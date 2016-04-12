@@ -44,17 +44,30 @@
 		</encoder>
 	</appender>
 
-	<logger name="cn.eakay.demo.webfront.controller"
-			level="${root.level}" additivity="false">
-		<appender-ref ref="mvcLogAppender" />
-	</logger>
+	<!-- 每天controller层的数据 -->
+	<appender name="jobLogAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_PATH}/demo-job.log</file>
+		<append>true</append>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_PATH}/demo-job.log.%d{yyyy-MM-dd}</fileNamePattern>
+			<!-- 只保留最近30天的 -->
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<!-- 日志文件格式 -->
+		<encoder>
+			<!-- 业务分析log格式，所有业务分析使用的格式，都是这个格式，一般对应的logger都是warn或者error -->
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] %-5level:%msg%n[%d{yyyy-MM-dd-HH:mm:ss.SSS}]==> %logger.%method\(%file:%L\)[%t]%n</pattern>
+			<charset>${LOG_CHARSET}</charset>
+		</encoder>
+	</appender>
 
 	<!-- 本地性能log -->
-	<appender name="performanceLogAppender"
+	<appender name="perf4jLogAppender"
 			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_PATH}/performance/perf4j.log</file>
 		<rollingPolicy
 				class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>${LOG_PATH}/performance/performance_%d{yyyy-MM-dd}.log
+			<fileNamePattern>${LOG_PATH}/performance/perf4j.log.%d{yyyy-MM-dd}
 			</fileNamePattern>
 			<maxHistory>90</maxHistory>
 		</rollingPolicy>
@@ -64,14 +77,24 @@
 			<charset>utf-8</charset>
 		</encoder>
 	</appender>
-
 	<appender name="CoalescingStatistics"
 			  class="org.perf4j.logback.AsyncCoalescingStatisticsAppender">
 		<param name="TimeSlice" value="60000" />
-		<appender-ref ref="performanceLogAppender" />
+		<appender-ref ref="perf4jLogAppender" />
 	</appender>
 
-	<include resource="performance/perf-aspectj-logback.xml"/>
+	<logger name="cn.eakay.demo.webfront.controller"
+			level="${root.level}" additivity="false">
+		<appender-ref ref="mvcLogAppender" />
+	</logger>
+
+	<logger name="cn.eakay.demo.biz.jobs"
+			level="${root.level}" additivity="false">
+		<appender-ref ref="jobLogAppender" />
+	</logger>
+
+	<!-- 使用perf4j 不使用自定义的 -->
+	<!--<include resource="performance/perf-aspectj-logback.xml"/>-->
 
 	<!-- root -->
 	<root level="${root.level}">

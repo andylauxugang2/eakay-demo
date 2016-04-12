@@ -35,5 +35,10 @@
             <groupId>cn.eakay</groupId>
             <artifactId>commons-base</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>cn.eakay</groupId>
+            <artifactId>commons-job</artifactId>
+        </dependency>
     </dependencies>
 </project>
