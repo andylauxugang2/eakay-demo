@@ -9,10 +9,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>cn.eakay</groupId>
     <artifactId>eakay-demo</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+
     <modules>
         <module>demo-biz</module>
         <module>demo-client</module>
@@ -126,7 +125,7 @@
             <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-all</artifactId>
-                <version>1.9.5</version>
+                <version>1.10.19</version>
             </dependency>
 
             <dependency>
@@ -168,13 +167,14 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-        </dependency>
+        
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.perf4j</groupId>
+            <artifactId>perf4j</artifactId>
         </dependency>
         <dependency>
             <groupId>org.perf4j</groupId>
