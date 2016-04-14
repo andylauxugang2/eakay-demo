@@ -40,5 +40,16 @@
             <groupId>cn.eakay</groupId>
             <artifactId>commons-job</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.csource</groupId>
+            <artifactId>fastdfs-client-java</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-configuration</groupId>
+            <artifactId>commons-configuration</artifactId>
+        </dependency>
+
     </dependencies>
 </project>

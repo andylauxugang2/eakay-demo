@@ -1,0 +1,57 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.eakay.demo.repository.db.mybatis.FileDAO">
+
+    <resultMap id="fileResultMap" type="fileDO">
+        <id column="id" property="id"/>
+        <result column="filename" property="filename"/>
+        <result column="remote_filename" property="remoteFileName"/>
+        <result column="group_name" property="groupName"/>
+        <result column="biz" property="biz"/>
+    </resultMap>
+
+    <sql id="file_all_column">
+        id,
+        filename,
+        remote_filename,
+        group_name,
+        biz
+    </sql>
+
+    <insert id="insertOne" parameterType="fileDO">
+        <selectKey resultType="long" keyProperty="id" order="AFTER" >
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+        INSERT INTO t_file(
+        filename,
+        remote_filename,
+        group_name,
+        biz,
+        create_time,
+        update_time
+        ) VALUES (
+        #{filename},
+        #{remoteFileName},
+        #{groupName},
+        #{biz},
+        #{createTime},
+        #{updateTime}
+        )
+    </insert>
+
+    <select id="queryByGroupNameAndRemoteFileName" resultMap="fileResultMap">
+        select <include refid="file_all_column"/>
+        from t_file
+        where id = #{id}
+    </select>
+
+    <select id="queryById" resultMap="fileResultMap">
+        select id,filename,group_name
+        from t_file
+        where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from t_file where id = #{id}
+    </delete>
+</mapper>

@@ -1,6 +1,5 @@
 package cn.eakay.demo.repository.db.mybatis;
 
-import cn.eakay.commons.dao.persistence.exception.DAOException;
 import cn.eakay.demo.client.dataobject.ActivityDO;
 
 import java.util.List;
@@ -13,5 +12,5 @@ import java.util.List;
  */
 public interface ActivityDAO {
 
-    List<ActivityDO> queryActivityDOsByOrderId(Long id) throws DAOException;
+    List<ActivityDO> queryActivityDOsByOrderId(Long id);
 }

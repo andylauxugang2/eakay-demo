@@ -23,6 +23,7 @@
 
 	<typeAliases>
 		<typeAlias alias="orderDO" type="cn.eakay.demo.client.dataobject.OrderDO"/>
+		<typeAlias alias="fileDO" type="cn.eakay.demo.client.dataobject.FileDO"/>
 	</typeAliases>
 
 	<mappers>

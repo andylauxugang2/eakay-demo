@@ -1,6 +1,5 @@
 package cn.eakay.demo.repository.db.mybatis;
 
-import cn.eakay.commons.dao.persistence.exception.DAOException;
 import cn.eakay.demo.client.dataobject.OrderDO;
 
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.List;
  */
 public interface OrderDAO {
 
-    OrderDO queryOrderById(Long orderId) throws DAOException;
+    OrderDO queryOrderById(Long orderId);
 
-    List<OrderDO> queryOrder() throws DAOException;
+    List<OrderDO> queryOrder();
 }
