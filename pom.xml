@@ -122,7 +122,7 @@
                 <artifactId>mockito-all</artifactId>
                 <version>1.10.19</version>
             </dependency>
-
+         <!-- eakay commons  start  -->
             <dependency>
                 <groupId>cn.eakay</groupId>
                 <artifactId>commons-base</artifactId>
@@ -134,7 +134,17 @@
                 <artifactId>commons-dao</artifactId>
                 <version>${eakay-commons.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>cn.eakay</groupId>
+                <artifactId>commons-job</artifactId>
+                <version>${eakay-commons.version}</version>
+            </dependency>
+             <dependency>
+                <groupId>cn.eakay</groupId>
+                <artifactId>commons-util</artifactId>
+                <version>${eakay-commons.version}</version>
+            </dependency>
+             <!-- eakay commons  end  -->
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
@@ -147,11 +157,7 @@
                 <version>1.1</version>
             </dependency>
 
-            <dependency>
-                <groupId>cn.eakay</groupId>
-                <artifactId>commons-job</artifactId>
-                <version>${eakay-commons.version}</version>
-            </dependency>
+            
         </dependencies>
     </dependencyManagement>
 
