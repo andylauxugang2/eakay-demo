@@ -6,12 +6,13 @@ import org.apache.commons.pool.impl.GenericObjectPool;
 /**
  * 基本的实现 带有连接池 commons-pool
  * 可使用spring创建
- *
+ * <p/>
  * Created by xugang on 16/4/13.
  */
-public class BasicFastDFSSource implements FastDFSSource{
+public class BasicFastDFSSource implements FastDFSSource {
 
     public BasicFastDFSSource() {
+        System.out.println();
     }
 
     @Override
@@ -42,6 +43,7 @@ public class BasicFastDFSSource implements FastDFSSource{
 
     /**
      * 设置initial Size
+     *
      * @param initialSize
      */
     public synchronized void setInitialSize(int initialSize) {
@@ -141,6 +143,7 @@ public class BasicFastDFSSource implements FastDFSSource{
 
     /**
      * 外部调用回收所有资源 包括pool
+     *
      * @throws Exception
      */
     public synchronized void close() throws Exception {
@@ -152,16 +155,15 @@ public class BasicFastDFSSource implements FastDFSSource{
             if (oldpool != null) {
                 oldpool.close();
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
             throw e;
         }
     }
 
     /**
-     * @see GenericObjectPool#addObject()
-     *
      * @return FastDFSSource
      * @throws Exception
+     * @see GenericObjectPool#addObject()
      */
     protected synchronized FastDFSSource createFastDFSSource() throws Exception {
         if (closed) {
@@ -177,7 +179,7 @@ public class BasicFastDFSSource implements FastDFSSource{
         createPoolableTrackerClientFactory();
         createFastDFSSourceInstance();
         try {
-            for (int i = 0 ; i < initialSize ; i++) {
+            for (int i = 0; i < initialSize; i++) {
                 //调用PoolableObjectFactory makeObject方法创建对象
                 //必须为trackerClientPool创建PoolableObjectFactory
                 //会调用_factory.validateObject passivateObject
@@ -192,6 +194,7 @@ public class BasicFastDFSSource implements FastDFSSource{
 
     /**
      * 创建 PoolableTrackerClientFactory 并附加到trackerClientPool属性中
+     *
      * @throws Exception
      */
     protected void createPoolableTrackerClientFactory() throws Exception {
@@ -232,5 +235,6 @@ public class BasicFastDFSSource implements FastDFSSource{
         objectPool.setTestWhileIdle(testWhileIdle);
         trackerClientPool = objectPool;
     }
+
 
 }

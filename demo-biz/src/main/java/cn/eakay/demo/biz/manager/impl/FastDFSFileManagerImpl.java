@@ -14,9 +14,8 @@ import org.csource.common.NameValuePair;
 import org.csource.fastdfs.FileInfo;
 import org.csource.fastdfs.StorageClient;
 import org.csource.fastdfs.TrackerServer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
 
 /**
  * Created by xugang on 16/4/13.
@@ -26,9 +25,9 @@ import javax.annotation.Resource;
 public class FastDFSFileManagerImpl implements FastDFSFileManager {
     public static final String PROTOCOL = "http://";
     public static final String SEPARATOR = "/";
-    public static final String TRACKER_NGNIX_PORT = "8080";
+    public static final String TRACKER_NGNIX_PORT = "";
 
-    @Resource
+    @Autowired
     @Setter
     private FastDFSSource fastDFSSource;
 

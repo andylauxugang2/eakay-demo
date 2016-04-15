@@ -3,7 +3,7 @@
 	   xsi:schemaLocation="
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
-	   default-autowire="no" default-lazy-init="true">
+	   default-autowire="no" default-lazy-init="false">
 
 	<!-- fast dfs 链接对象池 -->
 	<bean id="fastDFSSource" class="cn.eakay.demo.biz.common.fastdfspool.BasicFastDFSSource" destroy-method="close">

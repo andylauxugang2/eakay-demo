@@ -35,7 +35,7 @@ public class FileOptServiceImpl implements FileOptService {
 
         try {
             //1.上传到fast dfs server
-            if (fastDFSFileDO.getFileSize() == 0 || fastDFSFileDO.getContent() == null) {
+            if (fastDFSFileDO.getContent() == null) {
                 log.error("上传文件失败,文件为空:filename={}", fastDFSFileDO.getName());
                 FileErrorEnum.FILE_EMPTY_ERROR.fillResult(rs);
                 return rs;

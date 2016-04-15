@@ -35,6 +35,8 @@
 
 	<!-- datasource -->
 	<import resource="classpath:/source/datasource-demo.xml" />
+	<!-- fasf dfs server source -->
+	<import resource="classpath:/source/fastdfssource.xml" />
 	<!-- mybatis -->
 	<import resource="classpath:/mybatis/mybatis.xml" />
 	<!-- redis -->

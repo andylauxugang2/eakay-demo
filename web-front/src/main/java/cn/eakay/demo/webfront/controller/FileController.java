@@ -1,31 +1,19 @@
 package cn.eakay.demo.webfront.controller;
 
 import cn.eakay.demo.biz.service.FileOptService;
-import cn.eakay.demo.biz.service.OrderService;
 import cn.eakay.demo.client.dataobject.FastDFSFileDO;
 import cn.eakay.demo.client.dataobject.FileDO;
-import cn.eakay.demo.client.dataobject.OrderDO;
-import cn.eakay.demo.client.param.CreateOrderParam;
-import cn.eakay.demo.client.param.QueryOption;
-import cn.eakay.demo.client.param.UpdateOrderParam;
 import cn.eakay.demo.client.result.FileOptResultDO;
-import cn.eakay.demo.client.result.SingleOrderResultDO;
 import cn.eakay.demo.webfront.base.BaseController;
 import lombok.extern.slf4j.Slf4j;
-import org.perf4j.aop.Profiled;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
 
 /**
  * Created by xugang on 16/4/7.
@@ -94,9 +82,9 @@ public class FileController extends BaseController {
      * @param remoteFileName
      * @return
      */
-    @RequestMapping(value = "/order/{groupName}/{remoteFileName}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<FileDO> fetchingOrder(@PathVariable("groupName") String groupName,
-                                                @PathVariable("remoteFileName") String remoteFileName) {
+    @RequestMapping(value = "fetch/{groupName}", method = RequestMethod.GET, params = {"remoteFileName"}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<FileDO> fetchingFile(@PathVariable("groupName") String groupName,
+                                               @RequestParam("remoteFileName") String remoteFileName) {
 
         log.info("Fetching File with groupName={},remoteFileName={}", groupName, remoteFileName);
 
@@ -116,10 +104,10 @@ public class FileController extends BaseController {
      * @param remoteFileName
      * @return
      */
-    @RequestMapping(value = "/file/{id}/{groupName}/{remoteFileName}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}/{groupName}", params = {"remoteFileName"}, method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteFile(@PathVariable("id") Long id,
                                            @PathVariable("groupName") String groupName,
-                                           @PathVariable("remoteFileName") String remoteFileName) {
+                                           @RequestParam("remoteFileName") String remoteFileName) {
 
         log.info("Fetching & delete file with fileId={},groupName={},remoteFileName={}", new Object[]{id, groupName, remoteFileName});
 

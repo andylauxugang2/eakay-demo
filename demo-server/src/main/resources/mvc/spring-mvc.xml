@@ -27,5 +27,16 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 表示用来解析request请求的默认编码格式，当没有指定的时候根据Servlet规范会使用默认值ISO-8859-1 -->
+        <property name="defaultEncoding" value="${demo.multipart.defaultEncoding}"></property>
+        <!-- 设置允许上传的最大文件大小，以字节为单位计算。当设为-1时表示无限制，默认是-1 -->
+        <property name="maxUploadSize" value="${demo.multipart.maxUploadSize}"></property>
+        <!-- 设置在文件上传时允许写到内存中的最大值，以字节为单位计算，默认是10240 -->
+        <property name="maxInMemorySize" value="${demo.multipart.maxInMemorySize}"></property>
+        <!--推迟文件解析，先在controller中抛出文件大小异常-->
+        <property name="resolveLazily" value="${demo.multipart.resolveLazily}"/>
+    </bean>
+
     <!-- 拦截器 -->
 </beans>

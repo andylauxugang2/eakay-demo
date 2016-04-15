@@ -4,6 +4,7 @@ import cn.eakay.demo.biz.common.config.FastdfsClientConfig;
 import cn.eakay.demo.biz.common.fastdfspool.BasicFastDFSSource;
 import cn.eakay.demo.biz.manager.impl.FastDFSFileManagerImpl;
 import cn.eakay.demo.client.dataobject.FastDFSFileDO;
+import cn.eakay.demo.client.result.FileUploadResultDO;
 import org.csource.fastdfs.FileInfo;
 import org.junit.Assert;
 import org.junit.Before;
@@ -42,19 +43,26 @@ public class TestFastdfs {
         }
 
         FastDFSFileDO fastDFSFileDO = new FastDFSFileDO("520", file_buff, "jpg");
-        String fileAbsolutePath = fileManager.uploadFast(fastDFSFileDO);
-        System.out.println(fileAbsolutePath);
         fis.close();
+
+        FileUploadResultDO resultDO = fileManager.uploadFast(fastDFSFileDO);
+        Assert.assertTrue(resultDO.isSuccess());
     }
 
     @Test
     public void getFile() throws Exception {
         FastdfsClientConfig clientConfig = new FastdfsClientConfig();
-        FileInfo fileInfo = fileManager.getFileFast("IDCARD", "M00/00/00/Zch5C1cPO36AP2gfAArBeOlRIqM314.jpg");
+        FileInfo fileInfo = fileManager.getFileFast("IDCARD", "M00/00/00/ezgsT1cQ-miAMw41AACZ8ASiEgA9543824");
         Assert.assertNotNull(fileInfo);
         String sourceIpAddr = fileInfo.getSourceIpAddr();
         long size = fileInfo.getFileSize();
         System.out.println("ip:" + sourceIpAddr + ",size:" + size);
+    }
+
+    @Test
+    public void deleteFile() throws Exception {
+        FastdfsClientConfig clientConfig = new FastdfsClientConfig();
+        fileManager.deleteFileFast("IDCARD", "M00/00/00/ezgsT1cQ-miAMw41AACZ8ASiEgA9543824");
     }
 
     @Test
