@@ -6,6 +6,11 @@ package cn.eakay.demo.biz.common.fastdfspool;
  */
 public interface FastDFSSource {
 
+    /**
+     * 从对象池里获取 包装fast dfs tracker storage socket
+     * @return
+     * @throws Exception
+     */
     PoolableFastDFSSource getFastDFSSource() throws Exception;
 
 }

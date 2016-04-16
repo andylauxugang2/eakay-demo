@@ -1,7 +1,9 @@
 package cn.eakay.demo.biz.common.fastdfspool;
 
 import cn.eakay.demo.biz.common.config.FastdfsClientConfig;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.pool.impl.GenericObjectPool;
+import org.csource.fastdfs.TrackerServer;
 
 /**
  * 基本的实现 带有连接池 commons-pool
@@ -9,6 +11,7 @@ import org.apache.commons.pool.impl.GenericObjectPool;
  * <p/>
  * Created by xugang on 16/4/13.
  */
+@Slf4j
 public class BasicFastDFSSource implements FastDFSSource {
 
     public BasicFastDFSSource() {
@@ -208,7 +211,25 @@ public class BasicFastDFSSource implements FastDFSSource {
     }
 
     protected static void validateTrackerClientFactory(PoolableTrackerClientFactory trackerClientFactory) throws Exception {
-        //TODO
+        //看看是否与server能联通 注意联通后需要close调资源
+        PoolableFastDFSSource source = null;
+        try {
+            source = (PoolableFastDFSSource) trackerClientFactory.makeObject();
+            //初始化实例
+            trackerClientFactory.activateObject(source);
+            //validate
+            trackerClientFactory.validateConn(source);
+            //钝化
+            trackerClientFactory.passivateObject(source);
+        } catch (Exception e) {
+            log.error("fast dfs validate pool Factory 失败,不会创建资源对象放到池里");
+            throw e;
+        } finally {
+            if (source != null) {
+                trackerClientFactory.destroyObject(source);
+                //线程执行完释放root对象-source 等待被GC
+            }
+        }
     }
 
     protected void createFastDFSSourceInstance() throws Exception {
