@@ -84,6 +84,8 @@ public class PoolableFastDFSSource implements Serializable {
      * 验证 对象是否可以使用 是否可以 conn to 每个fast dfs server
      * _factory.validateObject(obj) 会调 obj validate
      *
+     * 重要提示：实现该方法 会保证启动服务时获取资源失败来保证启动异常 服务不可用
+     *
      * @see BasicFastDFSSource#validateTrackerClientFactory
      * @see GenericObjectPool#addObjectToPool
      */
