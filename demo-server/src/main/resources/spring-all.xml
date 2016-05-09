@@ -35,8 +35,6 @@
 
 	<!-- datasource -->
 	<import resource="classpath:/source/datasource-demo.xml" />
-	<!-- fasf dfs server source -->
-	<import resource="classpath:/source/fastdfssource.xml" />
 	<!-- mybatis -->
 	<import resource="classpath:/mybatis/mybatis.xml" />
 	<!-- redis -->
@@ -47,7 +45,5 @@
 	<import resource="classpath:/job/spring-job.xml" />
 	<!-- restful -->
 	<import resource="classpath:/restful/spring-restful.xml" />
-	<!-- config -->
-	<import resource="classpath:/config/spring-config.xml" />
 
 </beans>

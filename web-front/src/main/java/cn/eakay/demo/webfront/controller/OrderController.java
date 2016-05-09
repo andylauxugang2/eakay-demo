@@ -71,7 +71,7 @@ public class OrderController extends BaseController {
                 setQueryActInfo(true);
             }
         });
-        if (resultDO.isFailure()) {
+        if (!resultDO.isSuccess()) {
             log.error("Order with id:{} found error:{}", id, resultDO.getErrorCode() + resultDO.getErrorMsg());
             return new ResponseEntity<OrderDO>(HttpStatus.NOT_FOUND);
         }
@@ -91,7 +91,7 @@ public class OrderController extends BaseController {
 
         OrderDO orderDO = buildOrderDO(createOrderParam);
         SingleOrderResultDO resultDO = orderService.createOrder(orderDO);
-        if (resultDO.isFailure()) {
+        if (!resultDO.isSuccess()) {
             log.error("Create Order error:{}", resultDO.getErrorCode() + resultDO.getErrorMsg());
             return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -124,7 +124,7 @@ public class OrderController extends BaseController {
             }
         });
 
-        if (resultDO.isFailure()) {
+        if (!resultDO.isSuccess()) {
             log.error("Order with id:{} found error:{}", id, resultDO.getErrorCode() + resultDO.getErrorMsg());
             return new ResponseEntity<OrderDO>(HttpStatus.NOT_FOUND);
         }
@@ -132,7 +132,7 @@ public class OrderController extends BaseController {
         OrderDO currentOrder = resultDO.getOrder();
         currentOrder.setOrderType(upateOrderParam.getOrderType());
         resultDO = orderService.updateOrder(currentOrder);
-        if (resultDO.isFailure()) {
+        if (!resultDO.isSuccess()) {
             log.error("updateOrder with id:{} error:{}", id, resultDO.getErrorCode() + resultDO.getErrorMsg());
             return new ResponseEntity<OrderDO>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -154,12 +154,12 @@ public class OrderController extends BaseController {
                 setQueryActInfo(true);
             }
         });
-        if (resultDO.isFailure()) {
+        if (!resultDO.isSuccess()) {
             log.error("Order with id:{} found error:{}", id, resultDO.getErrorCode() + resultDO.getErrorMsg());
             return new ResponseEntity<OrderDO>(HttpStatus.NOT_FOUND);
         }
         resultDO = orderService.deleteOrderById(id);
-        if (resultDO.isFailure()) {
+        if (!resultDO.isSuccess()) {
             log.error("deleteOrder with id:{} error:{}", id, resultDO.getErrorCode() + resultDO.getErrorMsg());
             return new ResponseEntity<OrderDO>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -174,7 +174,7 @@ public class OrderController extends BaseController {
     public ResponseEntity<OrderDO> deleteAllOrders() {
         log.info("Deleting All Orders");
         SingleOrderResultDO resultDO = orderService.deleteAllOrders();
-        if (resultDO.isFailure()) {
+        if (!resultDO.isSuccess()) {
             log.error("deleteAllOrders error:{}", resultDO.getErrorCode() + resultDO.getErrorMsg());
             return new ResponseEntity<OrderDO>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
